@@ -9,6 +9,8 @@ def arithmetic_arranger(operations, answer=False):
 
     # this block splits each of the operation strings and places the first and second numbers
     # of each operation in separate lists, as well as the operators signs and results
+    # verificar a possibilidade de usar o split com espaços e dar o encaminhamento devido ao conjunto de caracteres, com o objetivo de economizar código, 
+    # para que não seja preciso checar a existência dos operadores com repetidos ifs
     for operation in operations:
         if '+' in operation:
             operators.append('+')
