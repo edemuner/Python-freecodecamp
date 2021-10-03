@@ -1,12 +1,17 @@
 from budget import Category
 
-food = Category("food")
+food = Category("Food")
+clothing = Category("Clothing")
+
 
 food.deposit(100)
-food.deposit(200)
-food.deposit(50)
+clothing.deposit(100)
 
 food.withdraw(30)
-food.withdraw(20)
+
+food.transfer(clothing, 50)
+clothing.transfer(food, 10)
 
 print(food.get_balance())
+print(clothing.get_balance())
+
