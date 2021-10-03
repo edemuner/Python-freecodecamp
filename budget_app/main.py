@@ -15,3 +15,6 @@ clothing.transfer(food, 10)
 print(food.get_balance())
 print(clothing.get_balance())
 
+food.withdraw(40)
+food.transfer(clothing, 40)
+print(food.get_balance())

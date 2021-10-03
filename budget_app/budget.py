@@ -12,7 +12,8 @@ class Category:
         self.ledger.append( {"amount": amount, "description":description} )
 
     def withdraw(self, amount, description=''):
-        self.ledger.append( {"amount": - amount, "description": description} )
+        if self.check_funds(amount):
+            self.ledger.append( {"amount": - amount, "description": description} )
 
     def get_balance(self):
         balance = 0
@@ -25,10 +26,13 @@ class Category:
 
     # transfer realiza transferências entre diferentes objetos
     def transfer(self, category, amount):
-        if self.get_balance() > 0:
+        if self.check_funds(amount):
             self.withdraw(amount, f'Transfer to {category.name}')
             category.deposit(amount, f'Transfer from {self.name}')
             return True
         else:
             return False
 
+    # esse método verifica se o saldo é suficiente, é usado em transfer e withdraw
+    def check_funds(self, amount):
+        return self.get_balance() > amount
