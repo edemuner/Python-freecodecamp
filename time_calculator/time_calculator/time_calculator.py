@@ -38,6 +38,9 @@ RULES: https://replit.com/github/freeCodeCamp/boilerplate-time-calculator
 
 
 def add_time(start, duration, weekday=None):
+    
+    # essa sequência de chamadas e atribuições organiza os dados recebidos e realiza a soma das horas, minutos e dias
+    # para isso faz uso das funções definidas mais abaixo, que funcionam como sub-rotinas
     spl_start = hour_splitter(start)
     spl_duration = hour_splitter(duration)
 
@@ -48,6 +51,7 @@ def add_time(start, duration, weekday=None):
     final_hours = hours_sum[1]
     final_days = hours_sum[0]
 
+    # abaixo é realizada a formatação final da string
     if final_hours >= 12:
         half = "PM"
         final_hours -= 12 if final_hours > 12 else 0
@@ -67,14 +71,15 @@ def add_time(start, duration, weekday=None):
     return newtime
 
 
-# essa função lida com string de tempo nos dois formatos recebidos em add_time
-# retorna 2 ou 3 valores, conforme seja no formato "start" ou "duration""
-# sendo "start", o índice 0 é o AM/PM, seguido de horas e minutos
+# essa função organiza strings de tempo nos dois formatos recebidos em add_time
+# retorna 2 ou 3 valores, conforme a entrada lide com "start" ou "duration""
+# sendo "start", o índice [0] é o AM/PM, seguido de [1]: horas e [2]:minutos
 # em "duration", 0 e 1 são horas e minutos
 def hour_splitter(time):
     splitted_time = []
     if "AM" in time.upper() or "PM" in time.upper():
         time, half = time.upper().split()
+        # half é o AM/PM, time é a hora
         splitted_time.append(half)
     hour, minute = time.split(":")
     splitted_time.append(int(hour))
@@ -82,7 +87,7 @@ def hour_splitter(time):
     return splitted_time
 
 
-# essa função faz o incremento dos minutos, devolvendo uma lista com as horas e minutos
+# essa função faz o incremento dos minutos, devolvendo uma lista com as horas e minutos que resultam da soma de todos os minutos
 def minutes_incrementer(v1, v2):
     hour = 0
     minute = v1
@@ -94,6 +99,8 @@ def minutes_incrementer(v1, v2):
         minute += 1
     return [hour, minute]
 
+# essa função recebe todas as horas (do horário do dia recebido por add_time, de duration, e a somatória resultante dos minutos)
+# trabalha em conjunto com half para devolver uma lista com os dias decorridos e o horário do dia onde se chega
 
 def hour_incrementer(half, hours, duration_hours, hours_from_minutes):
     days = 0
