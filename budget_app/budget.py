@@ -36,3 +36,13 @@ class Category:
     # esse método verifica se o saldo é suficiente, é usado em transfer e withdraw
     def check_funds(self, amount):
         return self.get_balance() > amount
+
+    def __str__(self):
+        columnspam = 30
+        fstr = ''
+        fstr += self.name.center(30, '*') + '\n'
+        for item in self.ledger:
+            fstr += f'{item["description"][:24] : <23}'
+            fstr += f'{item["amount"] : >7}' + '\n'
+
+        return fstr
