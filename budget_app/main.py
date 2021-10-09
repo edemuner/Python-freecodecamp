@@ -44,7 +44,7 @@ def create_spend_chart(*args):
     # em seguida o valor é arredondado e adicionado à lista de porcentagens
     percentage_list = []
     for i in total_list:
-        percentage_list.append(math.floor(i / total))
+        percentage_list.append(round(10 * (i / total)))
 
     print(percentage_list)  # teste
 
