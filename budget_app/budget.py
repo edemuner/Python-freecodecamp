@@ -3,17 +3,16 @@ class Category:
     # essa classe cria categorias de orçamento (food, clothing, etc)
     # os objetos recebem transações financeiras e registram em ledger
 
-
     def __init__(self, name):
         self.name = name
         self.ledger = []
 
     def deposit(self, amount, description=''):
-        self.ledger.append( {"amount": amount, "description":description} )
+        self.ledger.append({"amount": amount, "description": description})
 
     def withdraw(self, amount, description=''):
         if self.check_funds(amount):
-            self.ledger.append( {"amount": - amount, "description": description} )
+            self.ledger.append({"amount": - amount, "description": description})
 
     def get_balance(self):
         balance = 0
@@ -21,8 +20,15 @@ class Category:
             balance += item["amount"]
         return balance
 
-    # esses 2 primeiros métodos realizam um depósito ou saque, get_balance retorna o saldo
+    def get_total_withdrawals(self):
+        total = 0
+        for item in self.ledger:
+            int_amount = int(item["amount"])
+            if int_amount < 0:
+                total += int_amount
+        return total
 
+    # esses 2 primeiros métodos realizam um depósito ou saque, get_balance retorna o saldo
 
     # transfer realiza transferências entre diferentes objetos
     def transfer(self, category, amount):
