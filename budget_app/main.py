@@ -35,7 +35,7 @@ def create_spend_chart(*args):
     # este primeiro bloco faz uma interface com Budget
     total_list = []
     for i in args:
-        total_list.append(i.get_total_withdrawals)
+        total_list.append(i.get_total_withdrawals())
     total = sum(total_list)
 
 
@@ -46,7 +46,7 @@ def create_spend_chart(*args):
     for i in total_list:
         percentage_list.append(math.floor(i / total))
 
-    print(percentage_list)
+    print(percentage_list)  # teste
 
 
 print('||||||||||||||||||||||||||||||||||||||||||||||')
