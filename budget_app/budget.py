@@ -21,6 +21,12 @@ class Category:
             balance += item["amount"]
         return balance
 
+    def get_total_withdrawals(self):
+        total = 0
+        for item in self.ledger:
+            total += int(item["amount"])
+        return total
+
     # esses 2 primeiros métodos realizam um depósito ou saque, get_balance retorna o saldo
 
 

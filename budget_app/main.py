@@ -21,3 +21,6 @@ print(food.get_balance())
 
 print(food)
 print(clothing)
+
+def create_spend_chart(*args):
+    pass
