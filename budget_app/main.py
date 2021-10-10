@@ -47,6 +47,25 @@ def create_spend_chart(*args):
         percentage_list.append(round(10 * (i / total)))
 
     print(percentage_list)  # teste
+    print(chart_drawer(percentage_list, args))
+
+
+def chart_drawer(percentage_list, *args):
+    columns = len(percentage_list)
+    chart_string = "Percentage spent by category\n" \
+                   "100|\n" \
+                   " 90|\n" \
+                   " 80|\n" \
+                   " 70|\n" \
+                   " 60|\n" \
+                   " 50|\n" \
+                   " 40|\n" \
+                   " 30|\n" \
+                   " 20|\n" \
+                   " 10|\n" \
+                   f"  0|{columns * ' o '}\n" \
+                   f"    {columns * '---'}-"
+    return chart_string
 
 
 print('||||||||||||||||||||||||||||||||||||||||||||||')
