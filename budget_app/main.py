@@ -47,20 +47,38 @@ def create_spend_chart(*args):
 
 def chart_drawer(names_and_percentages):
     columns = len(names_and_percentages)
+    values_for_balls = list(names_and_percentages.values())
+
+
+    def balls_drawer():
+        balls_line = ""
+        for i in range(columns):
+            if values_for_balls[i] < 10:
+                balls_line += "   "
+                values_for_balls[i] += 1
+            else:
+                balls_line += " o "
+        return balls_line
+
+
     chart_string = "Percentage spent by category\n" \
-                   "100|\n" \
-                   " 90|\n" \
-                   " 80|\n" \
-                   " 70|\n" \
-                   " 60|\n" \
-                   " 50|\n" \
-                   " 40|\n" \
-                   " 30|\n" \
-                   " 20|\n" \
-                   " 10|\n" \
+                   f"100|{balls_drawer()}\n" \
+                   f" 90|{balls_drawer()}\n" \
+                   f" 80|{balls_drawer()}\n" \
+                   f" 70|{balls_drawer()}\n" \
+                   f" 60|{balls_drawer()}\n" \
+                   f" 50|{balls_drawer()}\n" \
+                   f" 40|{balls_drawer()}\n" \
+                   f" 30|{balls_drawer()}\n" \
+                   f" 20|{balls_drawer()}\n" \
+                   f" 10|{balls_drawer()}\n" \
                    f"  0|{columns * ' o '}\n" \
                    f"    {columns * '---'}-"
+
+
+
     return chart_string
+
 
 
 print('||||||||||||||||||||||||||||||||||||||||||||||')
