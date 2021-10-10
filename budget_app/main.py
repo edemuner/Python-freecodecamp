@@ -29,29 +29,60 @@ print(clothing)
 
 
 def create_spend_chart(*args):
-    # total é o total de saques em todas as categorias (*args) passadas
-    # total_list é o conjunto do total de saques em cada categoria
 
-    # este primeiro bloco faz uma interface com Budget
-    total_list = []
+    # este primeiro bloco coleta os totais
+    total = 0
     for i in args:
-        total_list.append(i.get_total_withdrawals())
-    total = sum(total_list)
+        total += i.get_total_withdrawals()
+
+    # aqui são gerados dicionários com os nome das categorias como keys
+    # e os values são as proporções de cada categoria diante do total de saques
+    # numa proporção de 0 a 10
+    names_and_percentages = {}
+    for i in args:
+        names_and_percentages[i.name] = round(10 * (i.get_total_withdrawals() / total))
+
+    print(chart_drawer(names_and_percentages))
+
+
+def chart_drawer(names_and_percentages):
+    columns = len(names_and_percentages)
+    values_for_balls = list(names_and_percentages.values())
+
+
+    def balls_drawer():
+        balls_line = ""
+        for i in range(columns):
+            if values_for_balls[i] < 10:
+                balls_line += "   "
+                values_for_balls[i] += 1
+            else:
+                balls_line += " o "
+        return balls_line
+
+
+    chart_string = "Percentage spent by category\n" \
+                   f"100|{balls_drawer()}\n" \
+                   f" 90|{balls_drawer()}\n" \
+                   f" 80|{balls_drawer()}\n" \
+                   f" 70|{balls_drawer()}\n" \
+                   f" 60|{balls_drawer()}\n" \
+                   f" 50|{balls_drawer()}\n" \
+                   f" 40|{balls_drawer()}\n" \
+                   f" 30|{balls_drawer()}\n" \
+                   f" 20|{balls_drawer()}\n" \
+                   f" 10|{balls_drawer()}\n" \
+                   f"  0|{columns * ' o '}\n" \
+                   f"    {columns * '---'}-"
 
 
 
-    # aqui é calculada a proporção dos saques de cada categoria relativamente ao total de saques
-    # em seguida o valor é arredondado e adicionado à lista de porcentagens
-    percentage_list = []
-    for i in total_list:
-        percentage_list.append(round(10 * (i / total)))
+    return chart_string
 
-    print(percentage_list)  # teste
 
 
 print('||||||||||||||||||||||||||||||||||||||||||||||')
 
-print(food.get_total_withdrawals())
-print(clothing.get_total_withdrawals())
+
 
 create_spend_chart(food, clothing)
