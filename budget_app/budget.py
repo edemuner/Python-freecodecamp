@@ -52,3 +52,64 @@ class Category:
             fstr += f'{item["amount"] : >7}' + '\n'
 
         return fstr
+
+    @staticmethod
+    def create_spend_chart(*args):
+
+        # este primeiro bloco coleta os totais
+        total = 0
+        for i in args:
+            total += i.get_total_withdrawals()
+
+        # aqui são gerados dicionários com os nome das categorias como keys
+        # e os values são as proporções de cada categoria diante do total de saques
+        # numa proporção de 0 a 10
+        names_and_percentages = {}
+        for i in args:
+            names_and_percentages[i.name] = round(10 * (i.get_total_withdrawals() / total))
+
+        return Category.chart_drawer(names_and_percentages)
+
+
+    # este método desenha a tabela, para isso o desenho do "esqueleto" é feito na própria função
+    # enquanto as linhas individuais são feitas pelo balls_drawer()
+    @staticmethod
+    def chart_drawer(names_and_percentages):
+        columns = len(names_and_percentages)
+        values_for_balls = list(names_and_percentages.values())
+
+        # esta função foi definida aqui dentro, para usar o namespace de chart_drawer()
+        # pois a cada vez q a função é chamada (em cada linha), os valores são modificados
+        # para que ela desenhe "o" ou " " quando for necessário em cada caso
+        def balls_drawer():
+            balls_line = ""
+            for i in range(columns):
+                if values_for_balls[i] < 10:
+                    balls_line += "   "
+                    values_for_balls[i] += 1
+                else:
+                    balls_line += " o "
+            return balls_line
+
+        chart_string = "Percentage spent by category\n" \
+                       f"100|{balls_drawer()}\n" \
+                       f" 90|{balls_drawer()}\n" \
+                       f" 80|{balls_drawer()}\n" \
+                       f" 70|{balls_drawer()}\n" \
+                       f" 60|{balls_drawer()}\n" \
+                       f" 50|{balls_drawer()}\n" \
+                       f" 40|{balls_drawer()}\n" \
+                       f" 30|{balls_drawer()}\n" \
+                       f" 20|{balls_drawer()}\n" \
+                       f" 10|{balls_drawer()}\n" \
+                       f"  0|{columns * ' o '}\n" \
+                       f"    {columns * '---'}-"
+        chart_string += Category.columns_drawer(list(names_and_percentages.keys()))
+
+        return chart_string
+
+    @staticmethod
+    def columns_drawer(names):
+        columns_string = ""
+        for i in names:
+            pass
