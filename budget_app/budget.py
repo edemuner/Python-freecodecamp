@@ -110,12 +110,16 @@ class Category:
 
     @staticmethod
     def columns_drawer(names):
-        rows = len(max(names))
+        rows = len(max(names, key=len))
         columns_string = ""
+        print(names)
         for i in range(rows):
-            for j in range(names):
+            for j in range(len(names)):
+                if j == 0:
+                    columns_string += "    "
                 if i < len(names[j]):
                     columns_string += " " + names[j][i] + " "
                 else:
                     columns_string += "   "
-                columns_string += "\n"
+            columns_string += "\n"
+        return columns_string
