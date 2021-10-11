@@ -103,13 +103,19 @@ class Category:
                        f" 20|{balls_drawer()}\n" \
                        f" 10|{balls_drawer()}\n" \
                        f"  0|{columns * ' o '}\n" \
-                       f"    {columns * '---'}-"
+                       f"    {columns * '---'}-\n"
         chart_string += Category.columns_drawer(list(names_and_percentages.keys()))
 
         return chart_string
 
     @staticmethod
     def columns_drawer(names):
+        rows = len(max(names))
         columns_string = ""
-        for i in names:
-            pass
+        for i in range(rows):
+            for j in range(names):
+                if i < len(names[j]):
+                    columns_string += " " + names[j][i] + " "
+                else:
+                    columns_string += "   "
+                columns_string += "\n"
