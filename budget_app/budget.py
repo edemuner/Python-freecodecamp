@@ -54,18 +54,18 @@ class Category:
         return fstr
 
     @staticmethod
-    def create_spend_chart(*args):
+    def create_spend_chart(cats):
 
         # este primeiro bloco coleta os totais
         total = 0
-        for i in args:
+        for i in cats:
             total += i.get_total_withdrawals()
 
         # aqui são gerados dicionários com os nome das categorias como keys
         # e os values são as proporções de cada categoria diante do total de saques
         # numa proporção de 0 a 10
         names_and_percentages = {}
-        for i in args:
+        for i in cats:
             names_and_percentages[i.name] = round(10 * (i.get_total_withdrawals() / total))
 
         return Category.chart_drawer(names_and_percentages)
