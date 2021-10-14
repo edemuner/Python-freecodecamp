@@ -31,7 +31,7 @@ class Category:
     # esses 2 primeiros métodos realizam um depósito ou saque, get_balance retorna o saldo
 
     # transfer realiza transferências entre diferentes objetos
-    def transfer(self, category, amount):
+    def transfer(self, amount, category):
         if self.check_funds(amount):
             self.withdraw(amount, f'Transfer to {category.name}')
             category.deposit(amount, f'Transfer from {self.name}')
