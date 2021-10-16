@@ -54,5 +54,4 @@ entertainment.withdraw(33.40)
 business.withdraw(10.99)
 
 
-print(entertainment.ledger)
 print(budget.create_spend_chart([business, food, entertainment]))

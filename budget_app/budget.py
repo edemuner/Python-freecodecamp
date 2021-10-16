@@ -1,3 +1,5 @@
+import math
+
 class Category:
 
     # essa classe cria categorias de orçamento (food, clothing, etc)
@@ -65,7 +67,7 @@ def create_spend_chart(cats):
     # numa proporção de 0 a 10
     names_and_percentages = {}
     for i in cats:
-        names_and_percentages[i.name] = round(10 * (i.get_total_withdrawals() / total))
+        names_and_percentages[i.name] = math.floor(10 * (i.get_total_withdrawals() / total))
 
     return chart_drawer(names_and_percentages)
 
@@ -91,17 +93,17 @@ def chart_drawer(names_and_percentages):
         return balls_line
 
     chart_string = "Percentage spent by category\n" \
-                   f"100|{balls_drawer()}\n" \
-                   f" 90|{balls_drawer()}\n" \
-                   f" 80|{balls_drawer()}\n" \
-                   f" 70|{balls_drawer()}\n" \
-                   f" 60|{balls_drawer()}\n" \
-                   f" 50|{balls_drawer()}\n" \
-                   f" 40|{balls_drawer()}\n" \
-                   f" 30|{balls_drawer()}\n" \
-                   f" 20|{balls_drawer()}\n" \
-                   f" 10|{balls_drawer()}\n" \
-                   f"  0|{columns * ' o '}\n" \
+                   f"100|{balls_drawer()} \n" \
+                   f" 90|{balls_drawer()} \n" \
+                   f" 80|{balls_drawer()} \n" \
+                   f" 70|{balls_drawer()} \n" \
+                   f" 60|{balls_drawer()} \n" \
+                   f" 50|{balls_drawer()} \n" \
+                   f" 40|{balls_drawer()} \n" \
+                   f" 30|{balls_drawer()} \n" \
+                   f" 20|{balls_drawer()} \n" \
+                   f" 10|{balls_drawer()} \n" \
+                   f"  0|{columns * ' o '} \n" \
                    f"    {columns * '---'}-\n"
     chart_string += columns_drawer(list(names_and_percentages.keys()))
 
@@ -118,5 +120,7 @@ def columns_drawer(names):
                 columns_string += " " + names[j][i] + " "
             else:
                 columns_string += "   "
+            if j == len(names) -1:
+                columns_string += " "
         columns_string += "\n"
-    return columns_string
+    return columns_string[:-1]
