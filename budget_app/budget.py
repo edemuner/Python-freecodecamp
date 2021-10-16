@@ -58,14 +58,15 @@ def create_spend_chart(cats):
     # este primeiro bloco coleta os totais
     total = 0
     for i in cats:
-        total += i.get_total_withdrawals()
+        total += -i.get_total_withdrawals()
 
     # aqui são gerados dicionários com os nome das categorias como keys
     # e os values são as proporções de cada categoria diante do total de saques
     # numa proporção de 0 a 10
+    print(total)
     names_and_percentages = {}
     for i in cats:
-        names_and_percentages[i.name] = round(10 * (i.get_total_withdrawals() / total))
+        names_and_percentages[i.name] = round(10 * (-i.get_total_withdrawals() / total))
 
     return chart_drawer(names_and_percentages)
 
@@ -73,6 +74,7 @@ def create_spend_chart(cats):
 # este método desenha a tabela, para isso o desenho do "esqueleto" é feito na própria função
 # enquanto as linhas individuais são feitas pelo balls_drawer()
 def chart_drawer(names_and_percentages):
+    print(names_and_percentages)
     columns = len(names_and_percentages)
     values_for_balls = list(names_and_percentages.values())
 
@@ -109,7 +111,6 @@ def chart_drawer(names_and_percentages):
 def columns_drawer(names):
     rows = len(max(names, key=len))
     columns_string = ""
-    print(names)
     for i in range(rows):
         for j in range(len(names)):
             if j == 0:
