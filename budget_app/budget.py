@@ -25,7 +25,7 @@ class Category:
         for item in self.ledger:
             int_amount = int(item["amount"])
             if int_amount < 0:
-                total += int_amount
+                total += -int_amount
         return total
 
     # esses 2 primeiros métodos realizam um depósito ou saque, get_balance retorna o saldo
@@ -58,15 +58,15 @@ def create_spend_chart(cats):
     # este primeiro bloco coleta os totais
     total = 0
     for i in cats:
-        total += -i.get_total_withdrawals()
+        total += i.get_total_withdrawals()
 
     # aqui são gerados dicionários com os nome das categorias como keys
     # e os values são as proporções de cada categoria diante do total de saques
     # numa proporção de 0 a 10
-    print(total)
     names_and_percentages = {}
     for i in cats:
-        names_and_percentages[i.name] = round(10 * (-i.get_total_withdrawals() / total))
+        print(i.get_total_withdrawals())
+        names_and_percentages[i.name] = round(10 * (i.get_total_withdrawals() / total))
 
     return chart_drawer(names_and_percentages)
 
