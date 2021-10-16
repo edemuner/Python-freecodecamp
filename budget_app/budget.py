@@ -11,8 +11,8 @@ class Category:
         self.ledger.append({"amount": amount, "description": description})
 
     def withdraw(self, amount, description=''):
-        if self.check_funds(amount):
-            self.ledger.append({"amount": - amount, "description": description})
+        # if self.check_funds(amount):
+        self.ledger.append({"amount": - amount, "description": description})
 
     def get_balance(self):
         balance = 0
@@ -65,7 +65,6 @@ def create_spend_chart(cats):
     # numa proporção de 0 a 10
     names_and_percentages = {}
     for i in cats:
-        print(i.get_total_withdrawals())
         names_and_percentages[i.name] = round(10 * (i.get_total_withdrawals() / total))
 
     return chart_drawer(names_and_percentages)
