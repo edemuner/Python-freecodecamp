@@ -41,7 +41,7 @@ class Category:
 
     # esse método verifica se o saldo é suficiente, é usado em transfer e withdraw
     def check_funds(self, amount):
-        return self.get_balance() > amount
+        return self.get_balance() >= amount
 
     def __str__(self):
         columnspam = 30
