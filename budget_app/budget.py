@@ -10,11 +10,11 @@ class Category:
         self.ledger = []
 
     def deposit(self, amount, description=''):
-        self.ledger.append({"amount": amount, "description": description})
+        self.ledger.append({"amount": float(amount), "description": description})
 
     def withdraw(self, amount, description=''):
         # if self.check_funds(amount):
-        self.ledger.append({"amount": - amount, "description": description})
+        self.ledger.append({"amount": - float(amount), "description": description})
 
     def get_balance(self):
         balance = 0
@@ -46,7 +46,6 @@ class Category:
         return self.get_balance() >= amount
 
     def __str__(self):
-        columnspam = 30
         fstr = ''
         fstr += self.name.center(30, '*') + '\n'
         for item in self.ledger:
@@ -54,6 +53,7 @@ class Category:
             fstr += f'{item["amount"] : >7}' + '\n'
 
         return fstr
+    # PENDENTE - resolver a formatação dessa string
 
 def create_spend_chart(cats):
 
