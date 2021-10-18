@@ -15,6 +15,7 @@ class Category:
     def withdraw(self, amount, description=''):
         # if self.check_funds(amount):
         self.ledger.append({"amount": - float(amount), "description": description})
+        return True
 
     def get_balance(self):
         balance = 0
