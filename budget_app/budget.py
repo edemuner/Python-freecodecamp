@@ -51,11 +51,10 @@ class Category:
         fstr = ''
         fstr += self.name.center(30, '*') + '\n'
         for item in self.ledger:
-            fstr += f'{item["description"][:24] : <23}'
-            fstr += f'{item["amount"] : >7}' + '\n'
-
+            fstr += f'{item["description"][:23] : <23}'
+            fstr += f'{item["amount"] : >7.2f}' + '\n'
+        fstr += f'Total: {self.get_balance():.2f}'
         return fstr
-    # PENDENTE - resolver a formatação dessa string
 
 def create_spend_chart(cats):
 
