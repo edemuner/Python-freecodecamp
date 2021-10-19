@@ -20,3 +20,8 @@ class Rectangle:
         return (self.width ** 2 + self.height ** 2) ** .5
 
 
+    def get_picture(self):
+        pic = ''
+        for i in range(self.height):
+            pic += self.width * '*' + '\n'
+        return pic
