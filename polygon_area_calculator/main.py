@@ -1,15 +1,19 @@
-from shape_calculator import Rectangle
+from shape_calculator import Rectangle, Square
 
-rectangle = Rectangle(5, 5)
-rectangle2 = Rectangle(30, 20)
+rect = Rectangle(10, 5)
+print(rect.get_area())
+rect.set_height(3)
+print(rect.get_perimeter())
+print(rect)
+print(rect.get_picture())
 
+sq = Square(9)
+print(sq.get_area())
+# sq.set_side(4)
+print(sq.get_diagonal())
+print(sq)
+print(sq.get_picture())
 
-print(rectangle.get_picture())
-print(rectangle2.get_picture())
-
-print(rectangle.get_area())
-print(rectangle2.get_area())
-print(rectangle2.get_amount_inside(rectangle))
-
-print(rectangle)
-print(rectangle2)
+rect.set_height(8)
+rect.set_width(16)
+print(rect.get_amount_inside(sq))
