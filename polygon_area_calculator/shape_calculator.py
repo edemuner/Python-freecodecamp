@@ -25,3 +25,6 @@ class Rectangle:
         for i in range(self.height):
             pic += self.width * '*' + '\n'
         return pic
+
+    def get_amount_inside(self, other_rectangle):
+        return self.get_area() // other_rectangle.get_area()
