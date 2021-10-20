@@ -24,10 +24,13 @@ class Rectangle:
 
 
     def get_picture(self):
-        pic = ''
-        for i in range(self.height):
-            pic += self.width * '*' + '\n'
-        return pic
+        if self.width <= 50 and self.height <= 50:
+            pic = ''
+            for i in range(self.height):
+                pic += self.width * '*' + '\n'
+            return pic
+        else:
+            return 'Too big for picture.'
 
     def get_amount_inside(self, other_rectangle):
         return self.get_area() // other_rectangle.get_area()
