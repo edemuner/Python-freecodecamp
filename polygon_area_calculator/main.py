@@ -9,7 +9,7 @@ print(rect.get_picture())
 
 sq = Square(9)
 print(sq.get_area())
-# sq.set_side(4)
+sq.set_side(4)
 print(sq.get_diagonal())
 print(sq)
 print(sq.get_picture())
