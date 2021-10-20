@@ -10,3 +10,6 @@ print(rectangle2.get_picture())
 print(rectangle.get_area())
 print(rectangle2.get_area())
 print(rectangle2.get_amount_inside(rectangle))
+
+print(rectangle)
+print(rectangle2)

@@ -28,3 +28,6 @@ class Rectangle:
 
     def get_amount_inside(self, other_rectangle):
         return self.get_area() // other_rectangle.get_area()
+
+    def __str__(self):
+        return f'Rectangle(width={self.width}, height={self.height})'
