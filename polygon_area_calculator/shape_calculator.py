@@ -42,7 +42,7 @@ class Square(Rectangle):
         super().__init__(side, side)
 
     def __str__(self):
-        return f'Square(Side={self.width})'
+        return f'Square(side={self.width})'
 
     def set_side(self, side):
         self.width = self.height = side
