@@ -1,3 +1,6 @@
+import random
+import copy
+
 class Hat:
 
     contents = []
@@ -7,3 +10,9 @@ class Hat:
             color, number = i.split('=')
             for j in range(int(number)):
                 self.contents.append(color)
+
+    def draw(self, number):
+        if number > len(self.contents):
+            return self.contents
+        else:
+            return random.sample(self.contents, number)
