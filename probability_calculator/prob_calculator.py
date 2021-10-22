@@ -16,3 +16,10 @@ class Hat:
             return self.contents
         else:
             return random.sample(self.contents, number)
+
+
+def experiment(hat,
+               expected_balls,
+               num_balls_drawn,
+               num_experiments):
+    pass
