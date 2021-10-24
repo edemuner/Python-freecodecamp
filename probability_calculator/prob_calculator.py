@@ -1,5 +1,4 @@
 import random
-import copy
 
 class Hat:
 
@@ -7,6 +6,7 @@ class Hat:
 
     def __init__(self, *args):
         for i in args:
+            i = Color(i)
             color, number = i.split('=')
             for j in range(int(number)):
                 self.contents.append(color)
@@ -16,6 +16,10 @@ class Hat:
             return self.contents
         else:
             return random.sample(self.contents, number)
+
+class Color:
+    def __init__(self, color_name):
+        self.color_name = color_name
 
 
 def experiment(hat,
