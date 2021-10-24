@@ -24,10 +24,10 @@ def experiment(hat,
                num_experiments):
     times = 0
 
-    for exp in num_experiments:
+    for exp in range(num_experiments):
 
-        drawn = hat.draw(num_balls_drawn)
         for ball, number in expected_balls.items():
-            if drawn.count(ball) == number:
+            if hat.draw(num_balls_drawn).count(ball) == number:
                 times += 1
+
     return times / num_experiments
