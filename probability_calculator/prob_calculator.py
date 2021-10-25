@@ -4,22 +4,17 @@ class Hat:
 
     contents = []
 
-    def __init__(self, *args):
-        for i in args:
-            i = Color(i)
-            color, number = i.split('=')
-            for j in range(int(number)):
-                self.contents.append(color)
+    def __init__(self, **kwargs):
+        for i, j in kwargs.items():
+            for l in range(j):
+                self.contents.append(i)
+
 
     def draw(self, number):
         if number > len(self.contents):
             return self.contents
         else:
             return random.sample(self.contents, number)
-
-class Color:
-    def __init__(self, color_name):
-        self.color_name = color_name
 
 
 def experiment(hat,

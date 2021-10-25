@@ -1,6 +1,6 @@
 from prob_calculator import Hat, experiment
 
-hat = Hat('blue=2', 'red=4', 'yellow=6')
+hat = Hat(blue=2, red=4, yellow=6)
 
 print(hat.contents)
 print(hat.draw(6))
