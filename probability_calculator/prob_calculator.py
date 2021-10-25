@@ -29,8 +29,12 @@ def experiment(hat,
 
     for exp in range(num_experiments):
 
+        temp = hat.draw(num_balls_drawn)
+        match = 0
         for ball, number in expected_balls.items():
-            if hat.draw(num_balls_drawn).count(ball) == number:
-                times += 1
 
+            if temp.count(ball) >= number:
+                match += 1
+        if match == len(expected_balls):
+            times += 1
     return times / num_experiments

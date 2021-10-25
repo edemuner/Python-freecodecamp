@@ -1,17 +1,16 @@
 from prob_calculator import Hat, experiment
 
-hat = Hat(red=3, blue=2)
-hat = Hat(red=6, green=4)
+hat = Hat(blue=3,red=2,green=6)
 
 print(hat.contents)
-# print(hat.draw(6))
-#
-#
-#
-#
-# teste = experiment(hat,
-#            {'red': 2, 'yellow': 3, 'blue': 0},
-#            10,
-#            10)
-# print(teste)
+
+
+
+
+
+teste = experiment(hat=hat,
+                   expected_balls={"blue":2,"green":1},
+                   num_balls_drawn=4,
+                   num_experiments=1000)
+print(teste)
 
