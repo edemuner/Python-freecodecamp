@@ -1,21 +1,24 @@
 import random
-import copy
 
 class Hat:
 
-    contents = []
 
-    def __init__(self, *args):
-        for i in args:
-            color, number = i.split('=')
-            for j in range(int(number)):
-                self.contents.append(color)
+
+    def __init__(self, **kwargs):
+        self.contents = []
+        for i, j in kwargs.items():
+            for l in range(j):
+                self.contents.append(i)
+
 
     def draw(self, number):
         if number > len(self.contents):
             return self.contents
         else:
-            return random.sample(self.contents, number)
+            selected = random.sample(self.contents, number)
+            for i in selected:
+                self.contents.remove(i)
+            return selected
 
 
 def experiment(hat,
