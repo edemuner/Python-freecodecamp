@@ -37,4 +37,5 @@ def experiment(hat,
                 match += 1
         if match == len(expected_balls):
             times += 1
+        hat.contents += temp
     return times / num_experiments
