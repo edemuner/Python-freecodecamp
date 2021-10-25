@@ -15,7 +15,10 @@ class Hat:
         if number > len(self.contents):
             return self.contents
         else:
-            return random.sample(self.contents, number)
+            selected = random.sample(self.contents, number)
+            for i in selected:
+                self.contents.remove(i)
+            return selected
 
 
 def experiment(hat,
