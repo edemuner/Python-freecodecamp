@@ -2,9 +2,10 @@ import random
 
 class Hat:
 
-    contents = []
+
 
     def __init__(self, **kwargs):
+        self.contents = []
         for i, j in kwargs.items():
             for l in range(j):
                 self.contents.append(i)
