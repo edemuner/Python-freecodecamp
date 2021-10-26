@@ -1,4 +1,5 @@
 import random
+import copy
 
 class Hat:
 
@@ -13,7 +14,9 @@ class Hat:
 
     def draw(self, number):
         if number > len(self.contents):
-            return self.contents
+            temp_contents = copy.deepcopy(self.contents)
+            self.contents.clear()
+            return temp_contents
         else:
             selected = random.sample(self.contents, number)
             for i in selected:
@@ -31,11 +34,14 @@ def experiment(hat,
 
         temp = hat.draw(num_balls_drawn)
         match = 0
+
         for ball, number in expected_balls.items():
 
             if temp.count(ball) >= number:
                 match += 1
+
         if match == len(expected_balls):
             times += 1
+
         hat.contents += temp
     return times / num_experiments
